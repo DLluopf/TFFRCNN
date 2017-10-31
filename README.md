@@ -109,15 +109,17 @@ The demo performs detection using a VGG16 network trained for detection on PASCA
 
 5. Download pre-trained model [VGG16](https://drive.google.com/open?id=0ByuDEGFYmWsbNVF5eExySUtMZmM) and put it in the path `./data/pretrain_model/VGG_imagenet.npy`
 
-6. Run training scripts 
+6.1 Run training scripts 
 
     ```Shell
     cd $TFFRCNN
     python ./faster_rcnn/train_net.py --gpu 0 --weights ./data/pretrain_model/VGG_imagenet.npy --imdb voc_2007_trainval --iters 70000 --cfg  ./experiments/cfgs/faster_rcnn_end2end.yml --network VGGnet_train --set EXP_DIR exp_dir
      python ./faster_rcnn/train_net.py --gpu 0 --weights ./data/pretrain_model/VGG_imagenet.npy --imdb voc_2007_trainval --iters 70000 --cfg  ./experiments/cfgs/faster_rcnn_end2end.yml --network VGGnet_train --restore 0
-       python ./faster_rcnn/test_net.py --gpu 0 --weights ./output/faster_rcnn_voc_vgg/voc_2007_trainval/VGGnet_fast_rcnn_iter_70000.ckpt --imdb voc_2007_test  --cfg  ./experiments/cfgs/faster_rcnn_end2end.yml --network VGGnet_test
+      
 
     ```
+6.2 Run testing  scripts
+  python ./faster_rcnn/test_net.py --gpu 0 --weights ./output/faster_rcnn_voc_vgg/voc_2007_trainval/VGGnet_fast_rcnn_iter_70000.ckpt --imdb voc_2007_test  --cfg  ./experiments/cfgs/faster_rcnn_end2end.yml --network VGGnet_test
 
 7. Run a profiling
 
